@@ -36,23 +36,9 @@ public class PassAuthenticator {
 			boolean passHasNum = false;
 			boolean validatePassHasNum = false;
 			
-			//For loop that iterates through the "pass" string.  
-			for(int i = 0; i < pass.length(); i++) {
-				
-				//If the "pass" string contains a character that is a digit then "passHasNum" is set to true.
-				if(Character.isDigit(pass.charAt(i))) {
-					passHasNum = true;
-				}	
-			}
+			passHasNum = checkNum(pass, passHasNum);
 			
-			//Same functionality as the for loop above, however it iterates through the "validatePass" string instead.  
-			//If the conditions of the If statement is met then it will set "validatePassHasNum" to true.
-			for(int j = 0; j < validatePass.length(); j++) {
-				
-				if(Character.isDigit(validatePass.charAt(j))) {
-					validatePassHasNum = true;
-				}	
-			}
+			validatePassHasNum = checkNum(validatePass, validatePassHasNum);
 			
 			//Created a variable that stores the following string.
 			String entries = "Your first entry: " + pass + "\nYour second entry: " + validatePass;
@@ -119,6 +105,18 @@ public class PassAuthenticator {
 			f.close();
 		}
 		
+	}
+
+	private static boolean checkNum(String pass, boolean passHasNum) {
+		//For loop that iterates through the "pass" string.  
+		for(int i = 0; i < pass.length(); i++) {
+			
+			//If the "pass" string contains a character that is a digit then "passHasNum" is set to true.
+			if(Character.isDigit(pass.charAt(i))) {
+				passHasNum = true;
+			}	
+		}
+		return passHasNum;
 	}
 
 }
